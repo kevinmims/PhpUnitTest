@@ -1,0 +1,71 @@
+{
+    "name": "phpunittest",
+    "displayName": "PhpUnitTest",
+    "description": "Run PHP Unit Tests in the VS Code terminal window",
+    "version": "0.0.1",
+    "publisher": "listful",
+    "icon": "",
+    "engines": {
+        "vscode": "^1.10.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "keywords": [
+        "phpunittest",
+        "test",
+        "unittest",
+        "php"
+    ],
+    "activationEvents": [
+        "onCommand:phpunittest.sayHello",
+        "onCommand:phpunittest.runUnitTest"
+    ],
+    "main": "./out/src/extension",
+    "contributes": {
+        "commands": [{
+                "command": "phpunittest.sayHello",
+                "title": "Hello World"
+            },
+            {
+                "command": "phpunittest.runUnitTest",
+                "title": "PhpUnitTest: run test"
+            }
+        ],
+        "keybindings": [{
+            "command": "phpunittest.runUnitTest",
+            "key": "f7",
+            "mac": "f7",
+            "when": "editorTextFocus"
+        }],
+        "configuration": {
+            "type": "object",
+            "title": "PHPUnitTest Config",
+            "properties": {
+                "phpunittest.execPath": {
+                    "type": "string",
+                    "default": "phpunit",
+                    "description": "Path to phpunit executable"
+                },
+                "phpunittest.arguments": {
+                    "type": "array",
+                    "default": [],
+                    "description": "Any phpunit args (phpunit --help)"
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "tsc -p ./",
+        "compile": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^2.0.3",
+        "vscode": "^1.0.0",
+        "mocha": "^2.3.3",
+        "@types/node": "^6.0.40",
+        "@types/mocha": "^2.2.32"
+    }
+}
