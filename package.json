@@ -8,6 +8,15 @@
     "engines": {
         "vscode": "^1.10.0"
     },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/kevinmims/PhpUnitTest"
+    },
+    "homepage": "https://github.com/kevinmims/PhpUnitTest/blob/master/README.md",
+    "bugs": {
+        "url": "https://github.com/kevinmims/PhpUnitTest/issues"
+    },
+    "license": "SEE LICENSE IN LICENSE.md",
     "categories": [
         "Other"
     ],
