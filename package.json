@@ -27,20 +27,14 @@
         "php"
     ],
     "activationEvents": [
-        "onCommand:phpunittest.sayHello",
         "onCommand:phpunittest.runUnitTest"
     ],
     "main": "./out/src/extension",
     "contributes": {
         "commands": [{
-                "command": "phpunittest.sayHello",
-                "title": "Hello World"
-            },
-            {
-                "command": "phpunittest.runUnitTest",
-                "title": "PhpUnitTest: run test"
-            }
-        ],
+            "command": "phpunittest.runUnitTest",
+            "title": "PhpUnitTest: run test"
+        }],
         "keybindings": [{
             "command": "phpunittest.runUnitTest",
             "key": "f7",
