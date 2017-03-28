@@ -30,13 +30,11 @@ function createTerminal() {
 
 function buildArgumentArray(directory: string) {
     try {
-
         clearArguments();
         setConfig();
         setEditor();
         setEditorFileName();
-        setWordRange();
-
+        
         addExecPath();
         addConfigArgs();
 
@@ -44,7 +42,7 @@ function buildArgumentArray(directory: string) {
             addArgument(directory);
 
         } else {
-            addWordAtCursor();
+            addFilterIfFunction();
             addRelativePath();
         }
     } catch (e) {
@@ -79,8 +77,6 @@ function getLatestTerminal() {
 function executeTerminalCommand() {
     getLatestTerminal().show(true);
     getLatestTerminal().sendText(testArguments.join(' '));
-    // let outputChannel = vscode.window.createOutputChannel("phpunit");
-    // outputChannel.show(true);
 }
 
 function sendErrorNotification($msg) {
@@ -113,23 +109,19 @@ function setEditorFileName() {
     }
 }
 
-function setWordRange() {
-    wordRange = editor.document.getWordRangeAtPosition(editor.selection.active);
+function addFilterIfFunction() {
+    var lineNumber = editor.selection.active.line;
+    let line = editor.document.lineAt(lineNumber);
+    var lineWordArray = line.text.trim().split(" ");
+    var indexOfFunction = lineWordArray.indexOf("function");
+    
+    if (indexOfFunction !== -1 ) {
+        var functionName = lineWordArray[indexOfFunction + 1];
+        functionName = functionName.replace(/\s*\(.*?\)\s*/g, '');
 
-    if (wordRange == undefined) {
-        throw new Error('The wordRange of the selection could not be set.  Please place your cursor over a function name and try again.');
-    }
-}
-
-function addWordAtCursor() {
-    var wordOnCursor = editor.document.getText(wordRange);
-    let line = editor.document.lineAt(wordRange.start.line);
-    var isFunction = line.text.indexOf("function") != -1;
-    if (isFunction) {
-        addArgument("--filter");
-        addArgument(wordOnCursor);
-    } else {
-        throw new Error("Cursor is not on a function.  Please try again");
+        if(functionName !== ""){
+            addArgument("--filter " + functionName);
+        }
     }
 }
 

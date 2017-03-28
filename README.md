@@ -1,29 +1,51 @@
 # PhpUnitTest for VS Code
 
-This is an extention that runs PHPUnit tests in the terminal window of VS Code.  
-It is a variation on [This Extention]("https://github.com/elonmallin/vscode-phpunit")
+This is an extention that runs PHPUnit tests in the terminal window of VS Code and is a variation of [this Extention]("https://github.com/elonmallin/vscode-phpunit")
 
 
-## Use
+## Get Started
 
+* Install [PHPUnit]("https://phpunit.de/") using composer
+    ```
+    composer global require "phpunit/phpunit=5.7.17"
+    - or -
+    composer global require "phpunit/phpunit=6.0.0"
+    ```
 
-Place your cursor over the function that you want to test.  Then press `F7` to execute the test
+* Download the PhpUnitTest extention for VS Code and modify the extention configs as needed
+    ```
+    {
+        "phpunittest.execPath": "phpunit",
+        "phpunittest.arguments": [
+            "--configuration", "./phpunit.xml.dist"
+        ]
+    }
+    ```
 
-## Requirements
+* Write a basic unit test
 
-- PHPUnit must be installed and accessible
+    ```
+    <?php
 
-## Extension Settings
+    class BasicTest extends PHPUnit_Framework_TestCase
+    {
+        public function testOne()
+        {
+            $one = 1;
+            $this->assertTrue($one == 1);
+        }
+    }
+    ```
 
-```
-{
-    "phpunittest.execPath": "path/to/phpunit",
-    "phpunittest.arguments": [
-        "--configuration", "./phpunit.xml.dist"
-    ]
-}
-```
-- If phpunit is installed globally, the default `execPath` does not need to be changed
+* Press `F7` to execute all of the tests in the current file
+* If you would like to only 1 test, click anywhere on the line where the function is declared and then press `F7`.  This will execute the unit test for that function only.
 
+-----
+## Keyboard Shortcuts
 
-**Enjoy!**
+- `F7` executes the unit tests
+- `alt+F7` executes all of the unit tests in the directory you are in
+
+-----
+## License
+[MIT License]("https://github.com/kevinmims/PhpUnitTest/blob/master/LICENSE")
