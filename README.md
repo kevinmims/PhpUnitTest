@@ -1,11 +1,11 @@
 # PhpUnitTest for VS Code
 
-This is an extention that runs PHPUnit tests in the terminal window of VS Code and is a variation of [this Extention]("https://github.com/elonmallin/vscode-phpunit")
+This is an extention that runs PHPUnit tests in the terminal window of VS Code and is a variation of [this Extention](https://github.com/elonmallin/vscode-phpunit)
 
 
 ## Get Started
 
-* Install [PHPUnit]("https://phpunit.de/") using composer
+* Install [PHPUnit](https://phpunit.de/) using composer
     ```
     composer global require "phpunit/phpunit=5.7.17"
     - or -
@@ -48,4 +48,4 @@ This is an extention that runs PHPUnit tests in the terminal window of VS Code a
 
 -----
 ## License
-[MIT License]("https://github.com/kevinmims/PhpUnitTest/blob/master/LICENSE")
+[MIT License](https://github.com/kevinmims/PhpUnitTest/blob/master/LICENSE)
